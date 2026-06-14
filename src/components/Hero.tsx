@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "../context/TranslationContext";
 import { Calendar, Shield, Users, MapPin, Award, CheckCircle2, ChevronRight, Play, Star } from "lucide-react";
-
+import headImage from "../assets/images/stadeconnect_hero_mockup_1781369850861.jpg";
 // Helper for counting animation simulation
 function CountingStat({ end, suffix = "", delay = 0 }: { end: number; suffix?: string; delay?: number }) {
   const [count, setCount] = useState(0);
@@ -165,7 +165,7 @@ export default function Hero() {
               
               <div className="relative w-full h-full rounded-xl overflow-hidden shadow-inner bg-slate-50">
                 <img
-                  src="/src/assets/images/stadeconnect_hero_mockup_1781369850861.jpg"
+                  src={headImage}
                   alt="StadeConnect 3D Stadium & App Mockup"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   referrerPolicy="no-referrer"
