@@ -1,0 +1,8 @@
+{
+  "name": "StadeConnect",
+  "description": "Premium SaaS landing page for an advanced football field reservation and management platform, featuring real-time AI heatmap analytics and elegant Arabic/French translations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

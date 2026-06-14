@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-base: #16A34A;
+  --color-primary-light: #22C55E;
+  --color-primary-dark: #15803D;
+  --color-primary-glow: rgba(22, 163, 74, 0.15);
+  
+  --font-latin: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Cairo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --radius-custom-sm: 12px;
+  --radius-custom-md: 18px;
+  --radius-custom-lg: 24px;
+  --radius-custom-xl: 32px;
+  
+  --shadow-premium-soft: 0 4px 30px rgba(0, 0, 0, 0.03);
+  --shadow-premium-elevated: 0 12px 50px -12px rgba(22, 163, 74, 0.08), 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+  --shadow-glow: 0 0 40px rgba(22, 163, 74, 0.2);
+}
+
+/* Custom CSS Classes for StadeConnect Premium SaaS Aesthetics */
+body {
+  font-family: var(--font-latin);
+  background-color: #F8FAFC; /* slate-50 background for premium professional look */
+  color: #0F172A; /* slate-900 text */
+  overflow-x: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+body.font-arabic {
+  font-family: var(--font-arabic) !important;
+}
+
+/* Glassmorphism Surface effect */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-surface-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Keyframes for beautiful floating animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-3deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+@keyframes draw-line {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-reverse 8s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom styled scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C1C1C1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #16A34A;
+}
+
+/* Glow effects tracking the mouse */
+.mouse-glow {
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--x, 0px) var(--y, 0px), rgba(34, 197, 94, 0.06), transparent 40%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Premium Intersection Observer Entrance Scroll-Reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.99);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-reveal.reveal-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered scrolling items container helper */
+.scroll-reveal-container .scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(25px) scale(0.995);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-reveal-container.reveal-active .scroll-reveal-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Generate delay values using pure CSS transition-delay offsets */
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(1) { transition-delay: 0ms; }
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(2) { transition-delay: 150ms; }
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(3) { transition-delay: 250ms; }
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(4) { transition-delay: 350ms; }
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(5) { transition-delay: 450ms; }
+.scroll-reveal-container.reveal-active .scroll-reveal-item:nth-child(6) { transition-delay: 550ms; }
+
